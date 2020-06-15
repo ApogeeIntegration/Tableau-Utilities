@@ -6,7 +6,7 @@ Scripts for splitting delimiter separated values from single cells into rows
 
 ### CellSplitter.py
 
-This script is a Python script written to be deployed via Tableau's TabPy server
+This script is a Python script written to be deployed via Tableau's TabPy server.
 
 - connect to the Sample Country Data in Tableau Prep
 - add a clean step to the data flow
@@ -21,7 +21,7 @@ This script is a Python script written to be deployed via Tableau's TabPy server
 
 ### CellSplitter.R
 
-This script is an R script written to be deployed via Tableau's RServe server
+This script is an R script written to be deployed via Tableau's RServe server.
 
 - connect to the Sample Country Data in Tableau Prep
 - add a clean step to the data flow
@@ -36,4 +36,12 @@ This script is an R script written to be deployed via Tableau's RServe server
 
 ## Command Line Script
 
+### CmdLineCellSplitter.py
 
+This is a Python script written to be deployed via the Command Line.
+
+- The command line script takes two required arguments to specify the input data file and the name of the column to split:
+  
+  $ python CmdLineCellSplitter.py My_Data_File.csv My_Target_Column
+  
+  - Also, the command line script can take additional optional arguments to specify the delimiter character, a new name for the target column if you would like to rename it, and any additional column names that you would like to be preserved in the output data.
