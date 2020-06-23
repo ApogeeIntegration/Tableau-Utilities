@@ -20,7 +20,7 @@ This is a Python script written to be called via command line, bash, terminal, e
 
 ### For MacOS or unix-based systems:
 
-                python3 images_to_tableau.py slides_path tableau_file_name [-f ?fixed height width] [-o --open]*
+                python3 images_to_tableau.py slides_path tableau_file_name [-f ?fixed height width] [-o --open]
 
 * Positional Arguments:
 
