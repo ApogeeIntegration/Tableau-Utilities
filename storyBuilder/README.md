@@ -1,6 +1,6 @@
 # Story Builder Utility
 
-Script for transferring PowerPoint slides into Tableau Story presentation.
+Script for transferring PowerPoint slides into a Tableau Story presentation.
 
 ## Images to Tableau Python Script
 
