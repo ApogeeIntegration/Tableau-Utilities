@@ -6,7 +6,7 @@ Script for transferring PowerPoint slides into a Tableau Story presentation.
 
 ### *images_to_tableau.py*
 
-This script was created to systematically insert JPEG images exported from PowerPoint to Tableau Dashboards, contained in a Tableau Story for presentation. The script is a huge timesaver when dealing with a large number of PPT slides to be converted into Tableau. The conversion is desired for better storytelling, and ultimately a path towards confident decision making, utilizing the wide range of features in Tableau. 
+This script was created to systematically insert JPEG images exported from PowerPoint into Tableau Dashboards, contained in a Tableau Story for presentation. The script is a huge timesaver when dealing with a large number of PPT slides to be converted into Tableau. The conversion is desired for better storytelling, and ultimately a path towards confident decision making, utilizing the wide range of features in Tableau. 
 
 Steps required for use:
 
