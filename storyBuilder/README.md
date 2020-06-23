@@ -22,7 +22,7 @@ For MacOS or unix-based systems:
 
 *python3 images_to_tableau.py slides_path tableau_file_name [-f ?fixed height width] [-o ?open]*
 
-?	Positional Arguments:
+Positional Arguments:
 o	slides_path: Path to the directory with the images exported from PPT.
 o	tableau_file_name: Name for the Tableau file created by the script.
 ?	Optional Arguments:
@@ -30,11 +30,14 @@ o	*[-f, --fixed height width]*: Flags whether you want the dashboards and story 
 o	*[-o, --open]*: Flags if you want the Tableau Workbook with the Story to open immediately with the script. Defaults to saving the Tableau .twb file in the current directory without opening. 
 
 For Windows OS:
+
 *python3 images_to_tableau.exe slides_path tableau_file_name [-f ?fixed height width] [-o ?open]*
 
-?	Positional Arguments:
-o	slides_path: Path to the directory with the images exported from PPT.
-o	tableau_file_name: Name for the Tableau file created by the script.
-?	Optional Arguments:
+Positional Arguments:
+
+* slides_path: Path to the directory with the images exported from PPT.
+* tableau_file_name: Name for the Tableau file created by the script.
+
+Optional Arguments:
 o	*[-f, --fixed height width]*: Flags whether you want the dashboards and story to be a fixed size. If so, input height and width following tag. Otherwise, defaults to creating the Story and Dashboards an automatic size.
 o	*[-o, --open]*: Flags if you want the Tableau Workbook with the Story to open immediately with the script. Defaults to saving the Tableau .twb file in the current directory without opening. 
