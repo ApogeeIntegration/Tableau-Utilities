@@ -4,7 +4,7 @@ Script for transferring PowerPoint slides into a Tableau Story presentation.
 
 ## Images to Tableau Python Script
 
-### *images_to_tableau.py*
+### *jpeg2twb.py*
 
 This script was created to systematically insert JPEG images exported from PowerPoint into Tableau Dashboards, contained in a Tableau Story for presentation. The script is a huge timesaver when dealing with a large number of PPT slides to be converted into Tableau. The conversion is desired for better storytelling, and ultimately a path towards confident decision making, utilizing the wide range of features in Tableau. 
 
@@ -20,7 +20,7 @@ This is a Python script written to be called via command line, bash, terminal, e
 
 ### For MacOS or unix-based systems:
 
-                python3 images_to_tableau.py slides_path tableau_file_name [-f ?fixed height width] [-o --open]
+                python3 jpeg2twb.py slides_path tableau_file_name [-f --fixed height width] [-o --open]
 
 * Positional Arguments:
 
@@ -33,7 +33,7 @@ This is a Python script written to be called via command line, bash, terminal, e
 
 ### For Windows OS:
 
-                python3 images_to_tableau.exe slides_path tableau_file_name [-f ?fixed height width] [-o --open]
+                python3 jpeg2twb.exe slides_path tableau_file_name [-f --fixed height width] [-o --open]
 
 * Positional Arguments:
 
