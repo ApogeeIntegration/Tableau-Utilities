@@ -22,7 +22,7 @@ This is a Python script written to be called via command line, bash, terminal, e
 * Positional Arguments:
 
   * *slides_path*: Path to the directory with the images exported from PPT.
-  * *tableau_file_name*: Name for the Tableau file created by the script.
+  * *tableau_file_name*: Name for the Tableau file created by the script. Tableau name input may or may not include the .twb extension, either way will work.
 
 * Optional Arguments:
   * *[-f, --fixed height width]*: Flags whether you want the dashboards and story to be a fixed size. If so, input height and width following tag. Otherwise, defaults to creating the Story and Dashboards an automatic size.
