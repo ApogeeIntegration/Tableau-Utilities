@@ -247,6 +247,11 @@ elif os.path.exists(tableau_file_path) and replace_tableau_file:
     </windows>
   </workbook>""")
 
+  # If optional argument is true, open the Tableau file immediately, otherwise create the .twb file unopened.
+  if open_file_after_creation:
+    subprocess.call(['open', tableau_file_path])
+
+
 else:
 
   ## Write the Tableau file with the images in directory passed in
@@ -406,9 +411,6 @@ else:
   </workbook>""")
 
 
-# If optional argument is true, open the Tableau file immediately, otherwise create the .twb file unopened.
-if open_file_after_creation:
-  subprocess.call(['open', tableau_file_path])
-
-
-
+  # If optional argument is true, open the Tableau file immediately, otherwise create the .twb file unopened.
+  if open_file_after_creation:
+    subprocess.call(['open', tableau_file_path])
