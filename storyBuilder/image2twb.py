@@ -85,11 +85,11 @@ def sorted_ls(path):
 
 list_images = sorted_ls(directory)
 
-if os.path.exists(tableau_file_path) & replace_tableau_file == False:
+if os.path.exists(tableau_file_path) and replace_tableau_file == False:
 
-  print("File already exists. If you wish to overwrite existing file, please rerun with the -r or --replace flag.")
+  print("WARNING: File already exists. If you wish to overwrite existing file, please rerun with the -r or --replace flag.")
 
-elif os.path.exists(tableau_file_path) & replace_tableau_file:
+elif os.path.exists(tableau_file_path) and replace_tableau_file:
 
   ## Write the Tableau file with the images in directory passed in
   with open(tableau_file_path, 'w') as f:
