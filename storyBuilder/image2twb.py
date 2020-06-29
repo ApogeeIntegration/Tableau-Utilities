@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser(description = "This script imports images in th
 parser.add_argument("images_folder_path", help = "Please provide the absolute path to the folder containing images to be imported into Tableau dashboards/ story")
 
 # Determine tableau file name
-parser.add_argument("tableau_path_name", help = "Please provide the name of the tableau output file without an extension")
+parser.add_argument("tableau_path_name", help = "Please provide the name of the Tableau output file without an extension")
 
 # Option to overwrite automatic sizing with a fixed size taking in a height and width parameter
 parser.add_argument("-f", "--fixed", metavar = ('HEIGHT', 'WIDTH'), help = "Flags whether you want the dashboards and story to be a fixed size. Requires a height and width pixel count for size dimensions desired.", type = int, nargs = 2,
@@ -73,6 +73,7 @@ else:
   tableau_file_path = args.tableau_path_name + ".twb"
 
 
+
 # Absolute path of directory with images
 directory = os.path.abspath(image_folder_path)
 
@@ -88,7 +89,7 @@ if os.path.exists(tableau_file_path) & replace_tableau_file == False:
 
   print("File already exists. If you wish to overwrite existing file, please rerun with the -r or --replace flag.")
 
-elif os.path.exists(tableau_file_path) & replace_tableau_file: 
+elif os.path.exists(tableau_file_path) & replace_tableau_file:
 
   ## Write the Tableau file with the images in directory passed in
   with open(tableau_file_path, 'w') as f:
@@ -247,6 +248,7 @@ elif os.path.exists(tableau_file_path) & replace_tableau_file:
   </workbook>""")
 
 else:
+
   ## Write the Tableau file with the images in directory passed in
   with open(tableau_file_path, 'w') as f:
       
@@ -402,7 +404,6 @@ else:
       f.write("""
     </windows>
   </workbook>""")
-
 
 
 # If optional argument is true, open the Tableau file immediately, otherwise create the .twb file unopened.
