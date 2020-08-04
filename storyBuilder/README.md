@@ -6,11 +6,11 @@ Script for transferring images exported from PowerPoint slides or otherwise into
 
 ### *image2twb.py*
 
-This script was created to systematically insert images exported from PowerPoint, or other sources, into Tableau Dashboards, contained in a Tableau Story for presentation. The script is a huge timesaver when dealing with a large number of PPT slides to be converted into Tableau. The conversion is desired for better storytelling, and ultimately a path towards confident decision making, utilizing the wide range of features in Tableau. Script runs with '.jpeg', '.jpg', or '.png' image files. Please also ensure that .twb and .twbx files are all defaulted to open up with Tableau Desktop on your machine, as Tableau Public will not work with this script.
+This script was created to systematically insert images exported from PowerPoint, or other sources, into Tableau Dashboards, contained in a Tableau Story for presentation. The script is a huge timesaver when dealing with a large number of PPT slides to be converted into Tableau. The conversion is desired for better storytelling, and ultimately a path towards confident decision making, utilizing the wide range of features in Tableau. Script runs with '.jpeg', '.jpg', '.bmp' or '.png' image files. Please also ensure that .twb and .twbx files are all defaulted to open  with Tableau Desktop, as Tableau Public will not work with this script.
 
 Steps required for use:
 
-1.	Export the PPT slide deck of interest as images in either .jpeg, .jpg, or .png format. Save the path to the directory with these images.
+1.	Export the PPT slide deck of interest as images in either .jpeg, .jpg, .bmp or .png format. Save the path to the directory with these images.
 2.	Run the script on terminal or command prompt using the arguments described below.
 
 ## Running Utility Script
