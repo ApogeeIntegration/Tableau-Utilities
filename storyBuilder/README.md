@@ -10,7 +10,7 @@ This script was created to systematically insert images exported from PowerPoint
 
 Steps required for use:
 
-1.	Export the PPT slide deck of interest as images in either .jpeg, .jpg, .bmp or .png format. Save the path to the directory with these images.
+1.	Export the PPT slide deck of interest as images in either .jpeg, .jpg, .bmp or .png format. Remember the path to the directory with these images.
 2.	Run the script on terminal or command prompt using the arguments described below.
 
 ## Running Utility Script
@@ -18,13 +18,15 @@ Steps required for use:
 This is a Python script written to be called via command line, bash, terminal, etc. 
 
                 python3 image2twb.py slides_path tableau_file_name [-f --fixed height width] [-o --open] [-r --replace]
+                
+The script also works with python2, aka python
 
 * Positional Arguments:
 
   * *slides_path*: Path to the directory with the images exported from PPT.
-  * *tableau_file_name*: Name for the Tableau file created by the script. Tableau name input may or may not include the .twb extension, either way will work.
+  * *tableau_file_name*: Name for the Tableau workbook file created by the script. The .twb extension is optional and will be appended if absent.
 
 * Optional Arguments:
   * *[-f, --fixed height width]*: Flags whether you want the dashboards and story to be a fixed size. If so, input height and width following tag. Otherwise, defaults to creating the Story and Dashboards an automatic size.
-  * *[-o, --open]*: Flags if you want the Tableau Workbook with the Story to open immediately with the script. Defaults to saving the Tableau .twb file in the current directory without opening. 
-  * *[-r, --replace]*: Flags if the Tableau name indicated already exists and you'd like to overwrite it/ replace it with the script.
+  * *[-o, --open]*: If provided, launches Tableau with the generated workbook. 
+  * *[-r, --replace]*: If provided, will overwrite an existing Tableau workbook; otherwise, will stop if the workbook file already exists.
