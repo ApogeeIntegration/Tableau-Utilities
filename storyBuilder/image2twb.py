@@ -1,16 +1,12 @@
 # Copyright 2020 Apogee Integration, LLC
 
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
+# Licensed under the Apache License, Version 2.0 (the "License"); # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 
-#   http://www.apache.org/licenses/LICENSE-2.0
+#   https://urldefense.us/v3/__http://www.apache.org/licenses/LICENSE-2.0__;!!BClRuOV5cvtbuNI!XHSjK-altBMEBcb29doVVSN5b_-KMFT0XOr_oxG_8N6hXeQc0NUoTQmpgimnDkMRItPthShdnydfyoZZ$ 
 
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# Unless required by applicable law or agreed to in writing, software # distributed under the License is distributed on an "AS IS" BASIS, # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and # limitations under the License.
 
 import os
 import argparse
@@ -22,8 +18,8 @@ def image_filenames(path):
   file_names = [fn for fn in os.listdir(path) if fn.lower().endswith(image_extensions)]
   return list(sorted(file_names, key=lambda f: os.stat(os.path.join(path, f)).st_mtime))
 
-def write_dashboard(image_path, num):
-  f.write("""
+def write_dashboard(file, size, image_path, num):
+  file.write("""
 
     <dashboard name='Dashboard {slide_num}'>
       <style />
@@ -73,46 +69,46 @@ def write_dashboard(image_path, num):
         </devicelayout>
       </devicelayouts>
       <simple-id uuid='{{4D058E49-AB62-4056-BA04-B1F1036B{end_id}}}' />
-    </dashboard>""".format(image_folder_image_path = image_path , slide_num = num, end_id = num + 1000, sizing_string = sizing_string))
+    </dashboard>""".format(image_folder_image_path = image_path , slide_num = num, end_id = num + 1000, sizing_string = size))
 
-def write_story_point(num):
-  f.write("""
+def write_story_point(file, num):
+  file.write("""
     <window class='dashboard' hidden='true' maximized='true' name='Dashboard {slide_num}'>
       <viewpoints />
       <active id='-1' />
       <simple-id uuid='{{B37FC551-7DBC-47F4-8E07-908C28F9{end_id}}}' />
     </window>""".format(slide_num = num, end_id = num + 1000))
+ 
+def create_story_workbook(args):
+ 
+  if args.fixed is None:
+    sizing_string = "sizing-mode='automatic'"
+    story_sizing_string = "sizing-mode='automatic'"
+  else:
+    height = args.fixed[0][0]
+    width = args.fixed[0][1]
+    sizing_string = "maxheight='{height}' maxwidth='{width}' minheight='{height}' minwidth='{width}' sizing-mode='fixed'".format(height = height, width = width)
+    story_sizing_string = "maxheight='964' maxwidth='1016' minheight='964' minwidth='1016'"
 
-parser = argparse.ArgumentParser(description = "Creates a Tableau workbook with a story containing one storypoint for each image in a folder")
+  if args.tableau_path_name.endswith(".twb"):
+    tableau_file_path = args.tableau_path_name
+  else:
+    tableau_file_path = args.tableau_path_name + ".twb"
 
-parser.add_argument("images_folder_path", help = "Absolute pathname of the folder containing images to include in the Tableau workbook")
-parser.add_argument("tableau_path_name", help = "Pathname of the Tableau workbook to create, .twb extension optional")
-parser.add_argument("-f", "--fixed", metavar = ('HEIGHT', 'WIDTH'), help = "Use a fixed size for dashboards and storypoints (the default is an automatic/responsive size). Requires a height and width size in pixels.", type = int, nargs = 2, action = "append")
-parser.add_argument("-o", "--open", help = "Open the generated workbook after creating it.", action = "store_true")
-parser.add_argument("-r", "--replace", help = "Replaces a Tableau workbook if one already exists with the same name.", action = "store_true")
-
-args = parser.parse_args()
-
-if args.fixed is None:
-  sizing_string = "sizing-mode='automatic'"
-  story_sizing_string = "sizing-mode='automatic'"
-else:
-  height = args.fixed[0][0]
-  width = args.fixed[0][1]
-  sizing_string = "maxheight='{height}' maxwidth='{width}' minheight='{height}' minwidth='{width}' sizing-mode='fixed'".format(height = height, width = width)
-  story_sizing_string = "maxheight='964' maxwidth='1016' minheight='964' minwidth='1016'"
-
-if args.tableau_path_name.endswith(".twb"):
-  tableau_file_path = args.tableau_path_name 
-else:
-  tableau_file_path = args.tableau_path_name + ".twb"
-
-if os.path.exists(tableau_file_path) and not args.replace:
-  print("File {path} already exists. If you wish to replace an existing file, use the -r or --replace flag.".format(path = tableau_file_path))
-else:
+  if os.path.exists(tableau_file_path) and not args.replace:
+    print("File {path} already exists. If you wish to replace an existing file, use the -r or --replace flag.".format(path = tableau_file_path))
+    exit(0)
+ 
+  if not os.path.exists(args.images_folder_path):
+    print("No folder named {dir}".format(dir = args.images_folder_path))
+    exit(0)
 
   directory = os.path.abspath(args.images_folder_path)
   image_list = image_filenames(directory)
+  
+  if not image_list:
+    print("Folder {dir} does not contain any image files.".format(dir = args.images_folder_path))
+    exit(0)
 
   with open(tableau_file_path, 'w') as f:
     f.write(
@@ -134,7 +130,7 @@ else:
 
     dashboard_num = 1
     for image_file in image_list:
-      write_dashboard(os.path.join(directory, image_file), dashboard_num)
+      write_dashboard(f, sizing_string, os.path.join(directory, image_file), dashboard_num)
       dashboard_num += 1
 
     # Story header
@@ -178,7 +174,7 @@ else:
     
     ### Create a unique id for each window created (per dashboard and per slide)
     for i in range(len(image_list)):
-      write_story_point(i + 1)
+      write_story_point(f, i + 1)
 
     f.write("""
     <window class='dashboard' maximized='true' name='Story 1'>
@@ -193,3 +189,16 @@ else:
 
   if args.open:
     subprocess.call(['open', tableau_file_path])
+
+if __name__ == "__main__":
+
+  parser = argparse.ArgumentParser(description = "Creates a Tableau workbook with a story containing one storypoint for each image in a folder")
+
+  parser.add_argument("images_folder_path", help = "Absolute pathname of the folder containing images to include in the Tableau workbook")
+  parser.add_argument("tableau_path_name", help = "Pathname of the Tableau workbook to create, .twb extension optional")
+  parser.add_argument("-f", "--fixed", metavar = ('HEIGHT', 'WIDTH'), help = "Use a fixed size for dashboards and storypoints (the default is an automatic/responsive size). Requires a height and width size in pixels.", type = int, nargs = 2, action = "append")
+  parser.add_argument("-o", "--open", help = "Open the generated workbook after creating it.", action = "store_true")
+  parser.add_argument("-r", "--replace", help = "Replaces a Tableau workbook if one already exists with the same name.", action = "store_true")
+
+  create_story_workbook(parser.parse_args())
+
