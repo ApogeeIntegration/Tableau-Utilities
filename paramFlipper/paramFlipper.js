@@ -386,9 +386,3 @@ function checkInputErrors () { // checks for various user input errors and displ
   }
   
 }
-
-
-
-  
-
-// $('#parameter').append(newchild) where it has this format html <option value="test">test</option>a
