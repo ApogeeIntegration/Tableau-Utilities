@@ -1,0 +1,82 @@
+
+@font-face {
+  font-family: 'bentonsansbook';
+  src: url('/assets/bentonsans_book-webfont.woff') format('woff2'),
+       url('/assets/bentonsans_book-webfont.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+body {
+  padding: 5px;
+  background-color: #F5F5F5;
+  font-family: 'bentonsansbook', Fallback, sans-serif;
+  font-size: 12px;
+  }
+
+
+label {
+  font-family: 'bentonsansbook';
+  font-size: 12px;
+}
+
+.paramInput {
+  font-size: 12px;
+  border: solid 1px lightgray;
+  max-width: 150px;
+}
+
+.select-label {
+  color: #666666;
+  margin-bottom: 0px;
+  margin-top: 8px;
+}
+
+.button-wrapper {
+  font-size: 12px;;
+  border: 1px solid #CBCBCB;
+  background-color: white;
+  border-radius: 2px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.button-wrapper:active {
+  border: solid 1px lightgray;
+}
+
+.button-wrapper:hover {
+  background-color: lightgray;
+  border: solid 1px #666666;
+}
+
+.change-input-button {
+  font-size: 12px;
+  border: transparent solid 1px;
+  background-color: #F5F5F5;
+  color: gray;
+  display: flex;
+  align-items: center;
+}
+
+.change-input-button:hover {
+  border: solid 1px lightgray;
+}
+
+.gray-png {
+  filter: invert(36%) sepia(11%) saturate(0%) hue-rotate(222deg) brightness(103%) contrast(85%);
+}
+
+.footer-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loop-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0px 15px;
+}

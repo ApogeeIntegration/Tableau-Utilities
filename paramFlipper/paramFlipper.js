@@ -32,80 +32,75 @@ tableau.extensions.initializeAsync().then(()=>{
   })
 
 
-function findParameter() { // finds user inputed parameter, shows play pause button, and runds loop
+function findParameter() { // finds user inputed parameter, shows play pause button, and runs loop
     getInputValues();
-    
     tableau.extensions.dashboardContent.dashboard.getParametersAsync().then(params => {
         global.parameter = params.find(param => param.name === global.selParam);
-        
     paraLoop();
     });
 } 
 
 function paraLoop() { // checks for user input error and runs each loop
-   $('#play').show()
+    $('#play').show()
   
-  var hasErrors = checkInputErrors()
-  if (hasErrors == true) {
-    return;
-  }
-  
-   clearInterval(global.interval)
-   global.currentVal = global.min;
-   $('.results').html(global.currentVal)
-   global.currentlyPlaying = true;
-  
-  if (global.parameter.allowableValues.type == 'range' && global.parameter.dataType != 'date' && global.parameter.dataType != 'date-time')  { // range + number case
-    global.interval = rangeLoop();
-    console.log(global.interval);
-    $('#play')[0].onclick = (function() {playPause()});
-  }
-  else if (global.parameter.allowableValues.type == 'list') {  // list case
-    global.currentVal = 0   
-    global.interval = listLoop()
-    $('#play')[0].onclick = (function() {playPause()} );
-  }
-  else if (global.parameter.dataType == 'date' && global.parameter.allowableValues.type == 'range') { // range + date case
-    global.parameter.changeValueAsync(global.min)
-    global.interval = rangeDateLoop();
-    $('#play')[0].onclick = (function() {playPause()} );
-  }
-  else if (global.parameter.dataType == 'date-time' && global.parameter.allowableValues.type == 'range') { // range + date-time case
-    global.parameter.changeValueAsync(global.min)
-    global.interval = rangeDateTimeLoop();
-    $('#play')[0].onclick = (function() {playPause()} );
-  }
+    var hasErrors = checkInputErrors()
+    if (hasErrors == true) {
+      return;
+    }
+    
+     clearInterval(global.interval)
+     global.currentVal = global.min;
+     $('.results').html(global.currentVal)
+     global.currentlyPlaying = true;
+    
+    if (global.parameter.allowableValues.type == 'range' && global.parameter.dataType != 'date' && global.parameter.dataType != 'date-time')  { // range + number case
+      global.interval = rangeLoop();
+      $('#play')[0].onclick = (function() {playPause()});
+    }
+    else if (global.parameter.allowableValues.type == 'list') {  // list case
+      global.currentVal = 0 
+      global.interval = listLoop()
+      $('#play')[0].onclick = (function() {playPause()} );
+    }
+    else if (global.parameter.dataType == 'date' && global.parameter.allowableValues.type == 'range') { // range + date case
+      global.parameter.changeValueAsync(global.min)
+      global.interval = rangeDateLoop();
+      $('#play')[0].onclick = (function() {playPause()} );
+    }
+    else if (global.parameter.dataType == 'date-time' && global.parameter.allowableValues.type == 'range') { // range + date-time case
+      global.parameter.changeValueAsync(global.min)
+      global.interval = rangeDateTimeLoop();
+      $('#play')[0].onclick = (function() {playPause()} );
+    }
 }
 
 function getInputValues () { // gets User inputed values
-    console.log($('#time'))
-    console.log($('#stepsize'))
     global.time = parseFloat($('#time').val())*1000
     global.stepsize = parseFloat($('#stepsize').val())
     global.selParam = $('#parameter').val()
     tableau.extensions.dashboardContent.dashboard.getParametersAsync().then(params => {
         global.parameter = params.find(param => param.name === global.selParam)
-    if (global.parameter.dataType != ('date')  && global.parameter.dataType != 'date-time') {
-    $('#min')[0].type = 'text'
-    $('#max')[0].type = 'text'
-    global.min = parseFloat($('#min').val())
-    global.max = parseFloat($('#max').val())
-    }
-     else if (global.parameter.dataType == 'date-time' && global.parameter.allowableValues.type != 'list') {
-      $('#min')[0].type = 'datetime-local'
-      $('#max')[0].type = 'datetime-local'
-      global.min = $('#min').val().replace(/T/g," ") // adjusts tableau date-time format to javascript format
-      global.max = $('#max').val().replace(/T/g," ")
-      $('#timeU').collapse('show')
-    }
-    else if (global.parameter.dataType == 'date' && global.parameter.allowableValues.type != 'list') {
-      $('#min')[0].type = 'date' // makes min/max input into date
-      $('#max')[0].type = 'date'
-      global.min = $('#min').val()
-      global.max = $('#max').val()
-      $('#timeU').collapse('show')
-    }
-  })
+        if (global.parameter.dataType != ('date')  && global.parameter.dataType != 'date-time') {
+          $('#min')[0].type = 'text'
+          $('#max')[0].type = 'text'
+          global.min = parseFloat($('#min').val())
+          global.max = parseFloat($('#max').val())
+        }
+        else if (global.parameter.dataType == 'date-time' && global.parameter.allowableValues.type != 'list') {
+          $('#min')[0].type = 'datetime-local'
+          $('#max')[0].type = 'datetime-local'
+          global.min = $('#min').val().replace(/T/g," ") // adjusts tableau date-time format to javascript format
+          global.max = $('#max').val().replace(/T/g," ")
+          $('#timeU').collapse('show')
+        }
+        else if (global.parameter.dataType == 'date' && global.parameter.allowableValues.type != 'list') {
+          $('#min')[0].type = 'date' // makes min/max input into date
+          $('#max')[0].type = 'date'
+          global.min = $('#min').val()
+          global.max = $('#max').val()
+          $('#timeU').collapse('show')
+        }
+      })
 }
 
 function setParameterList () { // sets list of parameters in UI
@@ -219,13 +214,14 @@ function playPause() { // allows play pause button to work
   global.currentlyPlaying = !global.currentlyPlaying;
 }
 
-// you can figure out the rest
+
 
 function rangeLoop() {// creates interval that iterates parameter for user specified time
-  global.interval = setInterval(function(){
-      console.log(global.currentVal);
-      global.parameter.changeValueAsync(global.currentVal).then( val => {
-      $('.results').html(val.value) })
+  if(global.time) {
+    global.interval = setInterval(function(){
+    //this runs continuously if global.time is NaN
+        global.parameter.changeValueAsync(global.currentVal).then( val => {
+        $('.results').html(val.value) })
       if (global.currentVal >= global.max) {
           global.parameter.changeValueAsync(global.max).then( val2 => {
           $('.results').html(val2.value)})
@@ -237,8 +233,9 @@ function rangeLoop() {// creates interval that iterates parameter for user speci
           }
       }
       global.currentVal += global.stepsize;
-  } , global.time);
-    return global.interval;
+    } , global.time);
+      return global.interval;
+  }
 }
 
 function listLoop() {  // loop for list parameters

@@ -8,6 +8,7 @@
     <min-api-version>1.0</min-api-version>
     <source-location>
       <url>https://d3h6f1h3fcw8yo.cloudfront.net</url> 
+      <!-- <url>http://localhost:8080//</url> -->
     </source-location>
     <icon></icon>
     <permissions>
@@ -16,9 +17,9 @@
   </dashboard-extension>
   <resources>
     <resource id="name">
-      <text locale="en_US">name in English</text>
-      <text locale="fr_BE">name in French</text>
-      <text locale="de_DE">name in German</text>
+      <text locale="en_US">Param Flipper</text>
+      <text locale="fr_BE">Param Flipper</text>
+      <text locale="de_DE">Param Flipper</text>
     </resource>
   </resources>
 </manifest>
