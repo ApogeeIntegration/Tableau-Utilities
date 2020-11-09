@@ -1,0 +1,101 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <title>phase 1 test</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link id="favicon" rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <!-- jQuery -->                                                    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      
+    <!-- Tableau extension API -->
+    <script src="https://cdn.jsdelivr.net/gh/tableau/extensions-api@master/lib/tableau.extensions.1.latest.js"></script>
+    <!-- import the webpage's javascript file -->
+    <script src="/paramFlipper.js" defer></script>
+    <!-- moment -->
+    <script src="/moment.js"></script>
+  </head>
+
+
+  <body>
+      <div class="modal" id="bigModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div role="document">
+          <div class="modal-content" style="border-radius: 0px;">
+            
+            <div class="modal-header" style="padding: 5px; border-bottom: 0px; padding-bottom: 0px;">
+              <!-- <h5 class="modal-title" id="exampleModalLabel">Param Flipper</h5> -->
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body" style="padding: 5px;">
+              <form action="/action_page.php">
+                <label for="parameter" class="select-label">Parameter:</label>
+                <select onchange="getParameterMinMax()" name="parameter" id="parameter" class="w-100 paramInput">
+                </select>
+        
+                <label for="timeLength" class="collapse"></label>
+                <label for="timeLength" class="select-label">Duration Displayed (seconds)</label>
+                <input type="text" id="time" name="time length" value="" class="w-100 paramInput">
+
+                <div id="ss" class="collapse">
+                  <label for="stepSize" id="stepSizeLabel" class="select-label" data-toggle="collapse">Step Size</label>
+                  <input type="text" id="stepsize" name="step size" value="" data-toggle="collapse" class="w-100 paramInput">
+                </div>
+                <div id="timeU" class="collapse">
+                  <select name ="timeUnits" id="timeUnits" class="paramInput"></select>
+                </div>
+                <div id="minimum" class="collapse">
+                  <label for="min" id="minlabel" class="select-label" data-toggle="collapse">Minimum Parameter Value</label>
+                  <input type="text" id="min" name="min" value="" data-toggle="collapse" class="w-100 paramInput">
+                </div>
+                <div id="maximum" class="collapse">
+                  <label for="max" id="maxlabel" class="select-label" data-toggle="collapse">Maximum Parameter Value</label>
+                  <input type="text" id="max" name="max" value="" data-toggle="collapse" class="w-100 paramInput">
+                </div>
+                </form>
+            </div>
+
+            <div class="w-100 footer-wrapper">
+              <div class="loop-wrapper">
+                <input type="checkbox" id="infinite" name="infinite" >
+                <label for="infinite" class="select-label" style="margin: 0px 5px 0px 10px; color: #666666; display: inline; font-size: 12px;">loop indefinitely </label>
+              </div>
+              <button type="button" class="button-wrapper" id="begin" data-dismiss="modal" onclick = "findParameter()">
+                play
+                <!-- <img  class="gray-png" src="assets/play.png" style="height: 25px;" > -->
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div style=" display: flex; margin: 0px; justify-content: flex-start;
+    align-items: center;" class="row">
+      <div style="display: flex; padding: 5px;">
+        <p style="margin: 0px; font-weight: bold;">
+          Parameter Current Value:
+          <div class="results" ></div>
+          <br>
+        </p>
+      </div>
+      <button type="button" class="button-wrapper" id="play">
+        Pause
+        <!-- <img  class="gray-png" src="assets/pause.png" style="height: 15px;" > -->
+      </button>
+      <button type="button" class="change-input-button" onclick="$('#bigModal').modal('show')">
+        Change Inputs 
+        <img class="gray-png" src="assets/dropdown.png" style="height: 20px;">
+      </button>
+    </div>
+    
+  </body>
+</html>
