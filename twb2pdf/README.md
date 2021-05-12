@@ -2,7 +2,7 @@
 
 Script for transferring multiple snapshots of different views of a Tableau Dashboard into a multi-page PDF file.
 
-## pdf2twb script
+## twb2pdf script
 
 ### *twb2pdf.py*
 
