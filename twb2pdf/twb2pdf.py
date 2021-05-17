@@ -64,7 +64,7 @@ def main():
             for i, j in filters.iterrows():  
                 image_req_option = TSC.ImageRequestOptions(imageresolution=TSC.ImageRequestOptions.Resolution.High)
                 for col in filters.columns:
-                    image_req_option.vf(col, str(j[col]).replace(' ', ''))
+                    image_req_option.vf(col, str(j[col]))
                     
                 server.views.populate_image(view_item, image_req_option)
                 
