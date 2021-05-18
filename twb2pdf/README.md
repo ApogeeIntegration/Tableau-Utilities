@@ -20,4 +20,4 @@ This is a Python script written to be called via command line, bash, terminal, e
 
      python tsv2pdf.py [-s --server] [-tn --token-name] [-ts --token-secret] [-v --view-name] [-csv --csv] [-f --filepath]
 
-* Note this step is optional, if it is ignored the default view will be printed to a pdf
+\* Note this step is optional, if it is ignored the default view will be printed to a pdf
