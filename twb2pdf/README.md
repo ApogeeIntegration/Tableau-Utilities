@@ -18,4 +18,4 @@ Steps required for use:
 
 This is a Python script written to be called via command line, bash, terminal, etc. 
 
-     python twb2pdf.py [-s --server] [-tn --token-name] [-ts --token-secret] [-v --view-name] [-csv --csv] [-f --filepath]
+     python tsv2pdf.py [-s --server] [-tn --token-name] [-ts --token-secret] [-v --view-name] [-csv --csv] [-f --filepath]
