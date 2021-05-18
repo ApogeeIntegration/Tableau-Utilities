@@ -10,7 +10,7 @@ This script was created to systematically allow a user to pick multiple filters 
 
 Steps required for use:
 
-1.	Create a .csv file with columns named after the filter and cells filled in with filter specifications
+1.	Create a .csv file with columns named after the filter and cells filled in with parameter and/or filter specifications*
 2.  Have the desired dashboard view uploaded to your server
 2.	Run the script on terminal or command prompt using the arguments described below.
 
@@ -19,3 +19,5 @@ Steps required for use:
 This is a Python script written to be called via command line, bash, terminal, etc. 
 
      python tsv2pdf.py [-s --server] [-tn --token-name] [-ts --token-secret] [-v --view-name] [-csv --csv] [-f --filepath]
+
+* Note this step is optional, if it is ignored the default view will be printed to a pdf
