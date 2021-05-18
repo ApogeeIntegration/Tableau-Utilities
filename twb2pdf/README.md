@@ -1,10 +1,10 @@
-# Tableau Dashboard to PDF File
+# Tableau Server View to PDF File
 
 Script for transferring multiple snapshots of different views of a Tableau Dashboard into a multi-page PDF file.
 
-## twb2pdf script
+## tsv2pdf script
 
-### *twb2pdf.py*
+### *tsv2pdf.py*
 
 This script was created to systematically allow a user to pick multiple filters for multiple snapshots of a view and then paste all images together into a single .pdf file.
 
