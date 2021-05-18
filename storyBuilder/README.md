@@ -30,3 +30,8 @@ The script also works with python2, aka python
   * *[-f, --fixed height width]*: Flags whether you want the dashboards and story to be a fixed size. If so, input height and width following tag. Otherwise, defaults to creating the Story and Dashboards an automatic size.
   * *[-o, --open]*: If provided, launches Tableau with the generated workbook. 
   * *[-r, --replace]*: If provided, will overwrite an existing Tableau workbook; otherwise, will stop if the workbook file already exists.
+
+## Publish to Server
+
+A script to publish the workbook to Tableau Server using TSC remotely was provided for convenience.
+
