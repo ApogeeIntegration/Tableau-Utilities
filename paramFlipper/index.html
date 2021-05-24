@@ -25,50 +25,71 @@
 
 
   <body>
-      <div class="modal" id="bigModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal" id="bigModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: #F5F5F5;">
         <div role="document">
           <div class="modal-content" style="border-radius: 0px;">
             
             <div class="modal-header" style="padding: 5px; border-bottom: 0px; padding-bottom: 0px;">
               <!-- <h5 class="modal-title" id="exampleModalLabel">Param Flipper</h5> -->
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="z-index: 1;">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
 
-            <div class="modal-body" style="padding: 5px;">
+            <div class="modal-body" style="margin-top: -30px; ">
+              <!-- style="padding: 5px;" -->
               <form action="/action_page.php">
-                <label for="parameter" class="select-label">Parameter:</label>
-                <select onchange="getParameterMinMax()" name="parameter" id="parameter" class="w-100 paramInput">
-                </select>
-        
-                <label for="timeLength" class="collapse"></label>
-                <label for="timeLength" class="select-label">Duration Displayed (seconds)</label>
-                <input type="text" id="time" name="time length" value="" class="w-100 paramInput">
+                <div style="display: flex; flex-direction: column; justify-content: flex-start;">
 
-                <div id="ss" class="collapse">
-                  <label for="stepSize" id="stepSizeLabel" class="select-label" data-toggle="collapse">Step Size</label>
-                  <input type="text" id="stepsize" name="step size" value="" data-toggle="collapse" class="w-100 paramInput">
+                  <div>
+                    <label for="parameter" class="select-label">Parameter:</label>
+  
+                    <select onchange="getParameterMinMax()" name="parameter" id="parameter" class="w-100 paramInput"></select>
+                  </div>
+                 
+                  <!-- <label for="timeLength" class="collapse"></label> -->
+                  
+                  <div>
+                    <label for="timeLength" class="select-label">Duration Displayed (seconds)</label>
+  
+                    <input type="text" id="time" name="time length" value="" class="w-100 paramInput">
+                  </div>
+                  
+                  <div id="ss" class="collapse">
+                    <label for="stepSize" id="stepSizeLabel" class="select-label" data-toggle="collapse">Step Size</label>
+  
+                    <input type="text" id="stepsize" name="step size" value="" data-toggle="collapse" class="w-100 paramInput">
+                  </div>
+  
+                  <!-- <div id="timeU" class="collapse">
+                    <select name ="timeUnits" id="timeUnits" class="paramInput"></select>
+                  </div> -->
+  
+                  <div id="minimum" class="collapse">
+                    <label for="min" id="minlabel" class="select-label" data-toggle="collapse">Minimum Parameter Value</label>
+  
+                    <input type="text" id="min" name="min" value="" data-toggle="collapse" class="w-100 paramInput">
+                  </div>
+  
+                  <div id="maximum" class="collapse">
+                    <label for="max" id="maxlabel" class="select-label" data-toggle="collapse">Maximum Parameter Value</label>
+  
+                    <input type="text" id="max" name="max" value="" data-toggle="collapse" class="w-100 paramInput">
+                  </div>
+  
+                  <div class="loop-wrapper">
+                    <input type="checkbox" id="infinite" name="infinite" >
+                    <label for="infinite" class="select-label" style="margin: 0px 5px 0px 10px; color: #666666; display: inline; font-size: 12px;">loop indefinitely </label>
+                  </div>
+
                 </div>
-                <div id="timeU" class="collapse">
-                  <select name ="timeUnits" id="timeUnits" class="paramInput"></select>
-                </div>
-                <div id="minimum" class="collapse">
-                  <label for="min" id="minlabel" class="select-label" data-toggle="collapse">Minimum Parameter Value</label>
-                  <input type="text" id="min" name="min" value="" data-toggle="collapse" class="w-100 paramInput">
-                </div>
-                <div id="maximum" class="collapse">
-                  <label for="max" id="maxlabel" class="select-label" data-toggle="collapse">Maximum Parameter Value</label>
-                  <input type="text" id="max" name="max" value="" data-toggle="collapse" class="w-100 paramInput">
-                </div>
-                </form>
+                
+
+              </form>
             </div>
 
             <div class="w-100 footer-wrapper">
-              <div class="loop-wrapper">
-                <input type="checkbox" id="infinite" name="infinite" >
-                <label for="infinite" class="select-label" style="margin: 0px 5px 0px 10px; color: #666666; display: inline; font-size: 12px;">loop indefinitely </label>
-              </div>
+              
               <button type="button" class="button-wrapper" id="begin" data-dismiss="modal" onclick = "findParameter()">
                 play
                 <!-- <img  class="gray-png" src="assets/play.png" style="height: 25px;" > -->
