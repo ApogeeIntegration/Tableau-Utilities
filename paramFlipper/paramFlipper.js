@@ -144,8 +144,6 @@ function getParameterMinMax () { // extracts maximum and minimum values of a par
         else if (minval != null) {
             $('#max').val(maxval)
         }
-        console.log(minval)
-        console.log(maxval)
       
       if (global.parameter.allowableValues.type != 'list' ) {
         if (minval != null)
@@ -220,20 +218,20 @@ function rangeLoop() {// creates interval that iterates parameter for user speci
   if(global.time) {
     global.interval = setInterval(function(){
     //this runs continuously if global.time is NaN
-        global.parameter.changeValueAsync(global.currentVal).then( val => {
+      global.parameter.changeValueAsync(global.currentVal).then( val => {
         $('.results').html(val.value) })
-      if (global.currentVal >= global.max) {
-          global.parameter.changeValueAsync(global.max).then( val2 => {
-          $('.results').html(val2.value)})
-          if ($('#infinite').prop('checked')) {
-          setTimeout(function() {paraLoop()}, global.time)
-          }
-          else {
-          clearInterval(global.interval)
-          }
-      }
-      global.currentVal += global.stepsize;
-    } , global.time);
+        if ((global.currentVal + global.stepsize) >= global.max) {
+            global.parameter.changeValueAsync(global.currentVal).then( val2 => {
+            $('.results').html(val2.value)})
+            if ($('#infinite').prop('checked')) {
+              setTimeout(function() {paraLoop()}, global.time)
+            } else {
+              clearInterval(global.interval)
+            }
+        } else {
+          global.currentVal += global.stepsize;
+        }
+      } , global.time);
       return global.interval;
   }
 }
