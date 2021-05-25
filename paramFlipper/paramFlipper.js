@@ -220,7 +220,7 @@ function rangeLoop() {// creates interval that iterates parameter for user speci
     //this runs continuously if global.time is NaN
       global.parameter.changeValueAsync(global.currentVal).then( val => {
         $('.results').html(val.value) })
-        if ((global.currentVal + global.stepsize) >= global.max) {
+        if ((global.currentVal + global.stepsize) > global.max) {
             global.parameter.changeValueAsync(global.currentVal).then( val2 => {
             $('.results').html(val2.value)})
             if ($('#infinite').prop('checked')) {
