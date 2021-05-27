@@ -119,14 +119,10 @@ function setParameterList () { // sets list of parameters in UI
   tableau.extensions.dashboardContent.dashboard.getParametersAsync().then(para => {
     for (var j in para) {
       paramList.push(para[j].name)
-      // issue here, breaks when parameter has multiple words in title 
-      // $('#parameter').append("<option value='" + paramList[j] + "'>" + paramList[j] + "</option>");
-      // console.log(paramList);
-      // console.log($('#parameter'));
-
     } 
     paramList.sort()
     for (param in paramList) {
+      // issue here, breaks when parameter has multiple words in title 
       $('#parameter').append("<option value='" + paramList[param] + "'>" + paramList[param] + "</option>");
     }
 
