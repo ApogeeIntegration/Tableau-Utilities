@@ -16,8 +16,14 @@ Steps required for use:
 
 ## Running Utility Script
 
-This is a Python script written to be called via command line, bash, terminal, etc. 
+This is a Python script written to be called via command line, bash, terminal, etc.
 
      python tsv2pdf.py [-s --server] [-tn --token-name] [-ts --token-secret] [-v --view-name] [-csv --csv] [-f --filepath]
 
 \* Note this step is optional, if it is ignored the default view will be printed to a pdf
+
+# TODO ITEMS:
+
+1. Make it printer-friendly, that is, don't have items extends past screen bounds because they also won't show up on the printed document.
+2. Allow the user to optionally specify a site.
+3. Think about what happens if a site has more than one workbook with the requested name. Print error message if multiple workbooks? Unless way to filter based on content URL.
