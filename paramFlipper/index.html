@@ -21,10 +21,10 @@
 
   <body>
     <div class="modal" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="Param Flipper main content" aria-hidden="true">
-      <div role="document">
+      <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header border-bottom-0 pb-0">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -43,8 +43,8 @@
                 </div>
 
                 <div id="stepSizeDiv" class="collapse">
-                  <label for="stepSize" id="stepSizeLabel" class="select-label mb-0" data-toggle="collapse">Step Size</label>
-                  <input type="text" id="stepSize" name="step size" value="" data-toggle="collapse" class="w-100 paramInput">
+                  <label for="stepSize" id="stepSizeLabel" class="select-label mb-0" data-bs-toggle="collapse">Step Size</label>
+                  <input type="text" id="stepSize" name="step size" value="" data-bs-toggle="collapse" class="w-100 paramInput">
                 </div>
 
                 <div id="timeUnit" class="collapse">
@@ -52,13 +52,13 @@
                 </div>
 
                 <div id="minimum" class="collapse">
-                  <label for="min" id="minlabel" class="select-label mb-0" data-toggle="collapse">Minimum Parameter Value</label>
-                  <input type="text" id="min" name="min" value="" data-toggle="collapse" class="w-100 paramInput">
+                  <label for="min" id="minlabel" class="select-label mb-0" data-bs-toggle="collapse">Minimum Parameter Value</label>
+                  <input type="text" id="min" name="min" value="" data-bs-toggle="collapse" class="w-100 paramInput">
                 </div>
 
                 <div id="maximum" class="collapse">
-                  <label for="max" id="maxlabel" class="select-label mb-0" data-toggle="collapse">Maximum Parameter Value</label>
-                  <input type="text" id="max" name="max" value="" data-toggle="collapse" class="w-100 paramInput">
+                  <label for="max" id="maxlabel" class="select-label mb-0" data-bs-toggle="collapse">Maximum Parameter Value</label>
+                  <input type="text" id="max" name="max" value="" data-bs-toggle="collapse" class="w-100 paramInput">
                 </div>
 
                 <div class="loop-wrapper d-flex align-items-center">
@@ -70,8 +70,8 @@
           </div>
 
           <div class="w-100 footer-wrapper d-flex flex-column align-items-center">
-            <button type="button" class="button-wrapper bg-white d-flex justify-content-center align-items-center" id="begin" data-dismiss="modal" onclick="findParameter()">
-              play
+            <button type="button" class="button-wrapper bg-white d-flex justify-content-center align-items-center" id="begin" data-bs-dismiss="modal" onclick="findParameter()">
+              Play
             </button>
           </div>
         </div>

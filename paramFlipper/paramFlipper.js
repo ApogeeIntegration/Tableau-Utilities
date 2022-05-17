@@ -193,7 +193,7 @@ function getParameterMinMax() {
       $('#minimum').collapse('hide');
       $('#maximum').collapse('hide');
       $('#timeUnit').collapse('hide');
-      console.log('hidden');
+
     } else if (global.parameter.allowableValues.type == 'range') {
       $('#stepSizeDiv').collapse('show');
       $('#minimum').collapse('show');
@@ -279,7 +279,6 @@ function listLoop() {
   global.max = global.parameter.allowableValues.allowableValues.length - 1;
 
   global.interval = setInterval(() => {
-    console.log(global.currentVal);
     global.parameter
       .changeValueAsync(global.parameter.allowableValues.allowableValues[global.currentVal].value)
       .then((val) => {
