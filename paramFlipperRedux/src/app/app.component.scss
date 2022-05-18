@@ -1,0 +1,34 @@
+mat-card {
+  background: snow;
+}
+
+.white-background {
+  background: white;
+}
+
+mat-card-title {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.parameter-step {
+  padding: 0;
+  min-width: 0px;
+  line-height: normal;
+}
+
+.previous-parameter-step {
+  margin-right: 3px;
+}
+
+.next-parameter-step {
+  margin-left: 3px;
+}
+
+#play-controls {
+  margin-bottom: 3px;
+}
+
+mat-select {
+  border: 1px solid gainsboro;
+}

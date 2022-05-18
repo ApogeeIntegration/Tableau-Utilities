@@ -1,0 +1,61 @@
+<mat-card>
+  <mat-card-title>Current Param Name</mat-card-title>
+  <mat-card-content>
+    <div>
+      <button mat-stroked-button class="parameter-step previous-parameter-step" aria-label="Previous parameter step">
+        <mat-icon class="white-background" aria-hidden="false" aria-label="Chevron left icon">chevron_left</mat-icon>
+      </button>
+
+      <mat-select value="Test" style="max-width: 125px" aria-label="Current parameter value">
+        <mat-option value="Test">Test</mat-option>
+        <mat-option value="Test2">Test2</mat-option>
+        <mat-option value="Test3">Test3</mat-option>
+        <mat-option value="Test4">Test4</mat-option>
+      </mat-select>
+
+      <button mat-stroked-button class="parameter-step next-parameter-step" aria-label="Next parameter step">
+        <mat-icon class="white-background" aria-hidden="false" aria-label="Chevron right icon">chevron_right</mat-icon>
+      </button>
+    </div>
+
+    <hr />
+
+    <div id="play-controls">
+      <button mat-stroked-button class="parameter-step previous-parameter-step" aria-label="Flip parameters backwards">
+        <mat-icon class="white-background" aria-hidden="false" aria-label="Backwards icon">fast_rewind</mat-icon>
+      </button>
+
+      <button
+        *ngIf="!currentlyPlaying; else stopPlayback"
+        mat-stroked-button
+        class="parameter-step previous-parameter-step"
+        aria-label="Play"
+        (click)="startStopPlayback()"
+      >
+        <mat-icon class="white-background" aria-hidden="false" aria-label="Play icon">play_arrow</mat-icon>
+      </button>
+
+      <button mat-stroked-button class="parameter-step next-parameter-step" aria-label="Flip parameters forwards">
+        <mat-icon class="white-background" aria-hidden="false" aria-label="Forwards icon">fast_forward</mat-icon>
+      </button>
+    </div>
+
+    <div>
+      <button mat-button class="parameter-step" aria-label="Configure">
+        Configure
+        <mat-icon aria-hidden="false" aria-label="Expand icon">expand_more</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #stopPlayback>
+  <button
+    mat-stroked-button
+    class="parameter-step previous-parameter-step"
+    aria-label="Stop"
+    (click)="startStopPlayback()"
+  >
+    <mat-icon aria-hidden="false" aria-label="Stop icon">stop</mat-icon>
+  </button>
+</ng-template>

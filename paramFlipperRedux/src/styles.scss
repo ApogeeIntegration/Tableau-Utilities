@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  font-family: 'BentonSans-Book', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.mat-select-value {
+  margin-left: 3px;
+  border-right: 1px solid gainsboro;
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background: snow;
+}
