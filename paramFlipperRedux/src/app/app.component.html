@@ -1,13 +1,13 @@
-<mat-card>
-  <mat-card-title>Current Param Name</mat-card-title>
-  <mat-card-content>
-    <div>
+<div class="container">
+  <div class="param-name">Current Param Name</div>
+  <div class="content">
+    <div class="param-values">
       <button mat-stroked-button class="parameter-step previous-parameter-step" aria-label="Previous parameter step">
         <mat-icon class="white-background" aria-hidden="false" aria-label="Chevron left icon">chevron_left</mat-icon>
       </button>
 
-      <mat-select value="Test" style="max-width: 125px" aria-label="Current parameter value">
-        <mat-option value="Test">Test</mat-option>
+      <mat-select value="Test" aria-label="Current parameter value">
+        <mat-option value="Test">Testasdfsdfasdfsdfasdfasdf</mat-option>
         <mat-option value="Test2">Test2</mat-option>
         <mat-option value="Test3">Test3</mat-option>
         <mat-option value="Test4">Test4</mat-option>
@@ -20,7 +20,7 @@
 
     <hr />
 
-    <div id="play-controls">
+    <div class="play-controls">
       <button mat-stroked-button class="parameter-step previous-parameter-step" aria-label="Flip parameters backwards">
         <mat-icon class="white-background" aria-hidden="false" aria-label="Backwards icon">fast_rewind</mat-icon>
       </button>
@@ -28,7 +28,7 @@
       <button
         *ngIf="!currentlyPlaying; else stopPlayback"
         mat-stroked-button
-        class="parameter-step previous-parameter-step"
+        class="parameter-step"
         aria-label="Play"
         (click)="startStopPlayback()"
       >
@@ -42,20 +42,15 @@
 
     <div>
       <button mat-button class="parameter-step" aria-label="Configure">
-        Configure
+        <span class="configure-text">Configure</span>
         <mat-icon aria-hidden="false" aria-label="Expand icon">expand_more</mat-icon>
       </button>
     </div>
-  </mat-card-content>
-</mat-card>
+  </div>
+</div>
 
 <ng-template #stopPlayback>
-  <button
-    mat-stroked-button
-    class="parameter-step previous-parameter-step"
-    aria-label="Stop"
-    (click)="startStopPlayback()"
-  >
+  <button mat-stroked-button class="parameter-step" aria-label="Stop" (click)="startStopPlayback()">
     <mat-icon aria-hidden="false" aria-label="Stop icon">stop</mat-icon>
   </button>
 </ng-template>

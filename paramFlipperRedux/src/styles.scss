@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+* {
+  font-size: 12px;
+}
+
 html,
 body {
   height: 100%;
@@ -11,10 +15,7 @@ body {
 }
 
 .mat-select-value {
-  margin-left: 3px;
+  margin-left: 0.25rem;
+  padding-right: 1rem;
   border-right: 1px solid gainsboro;
-}
-
-.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-  background: snow;
 }
