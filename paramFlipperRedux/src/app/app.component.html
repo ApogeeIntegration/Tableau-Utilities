@@ -73,7 +73,37 @@
         <div ngbDropdownMenu aria-labelledby="configureForm" class="overflow-hidden">
           <div class="row">
             <div class="col-auto">
-              <span>CONFIGURE MENU GOES HERE</span>
+              <form [formGroup]="paramForm">
+                <div class="form-group">
+                  <label for="parameter" class="form-label">Parameter:</label>
+                  <select
+                    class="form-select cursor-pointer"
+                    id="parameter"
+                    aria-label="Select active parameter"
+                    (change)="updateCurrentParam($event)"
+                    formControlName="parameter"
+                  >
+                    <option *ngFor="let param of params" [value]="param">{{ param }}</option>
+                  </select>
+
+                  <label for="flip-duration" class="form-label">Flip Duration:</label>
+                  <input id="flip-duration" type="number" class="form-control" formControlName="flipDuration" min="0" />
+
+                  <label for="flip-duration" class="form-label">Step Size:</label>
+                  <input id="flip-duration" type="number" class="form-control" formControlName="stepSize" min="0" />
+
+                  <label for="min-val" class="form-label">Minimum Value:</label>
+                  <input id="min-val" type="number" class="form-control" formControlName="minVal" />
+
+                  <label for="max-val" class="form-label">Maximum Value:</label>
+                  <input id="max-val" type="number" class="form-control" formControlName="maxVal" />
+
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="loop" formControlName="loop" />
+                    <label class="form-check-label" for="loop">Loop indefinitely</label>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>

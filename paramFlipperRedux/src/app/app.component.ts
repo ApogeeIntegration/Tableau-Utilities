@@ -16,12 +16,11 @@ export class AppComponent implements AfterViewInit {
   public currentParamValue = 'Test';
 
   public paramForm = new FormGroup({
-    parameter: new FormControl('', [Validators.required]),
-    flipDuration: new FormControl(2.0, [Validators.required]),
-    stepSize: new FormControl(''),
-    stepSizeUnit: new FormControl(''),
-    minVal: new FormControl(''),
-    maxVal: new FormControl(''),
+    parameter: new FormControl(this.currentParamName, [Validators.required]),
+    flipDuration: new FormControl(2.0, [Validators.required, Validators.min(0)]),
+    stepSize: new FormControl('', [Validators.required, Validators.min(0)]),
+    minVal: new FormControl('', [Validators.required]),
+    maxVal: new FormControl('', [Validators.required]),
     loop: new FormControl(false)
   });
 
@@ -37,6 +36,10 @@ export class AppComponent implements AfterViewInit {
 
   public startStopPlayback() {
     this.currentlyPlaying = !this.currentlyPlaying;
+  }
+
+  public updateCurrentParam(event: any) {
+    this.currentParamName = event.target.value;
   }
 
   private async getParameters() {
