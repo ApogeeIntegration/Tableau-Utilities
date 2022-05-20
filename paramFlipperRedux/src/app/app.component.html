@@ -1,56 +1,89 @@
-<div class="container">
-  <div class="param-name">Current Param Name</div>
-  <div class="content">
-    <div class="param-values">
-      <button mat-stroked-button class="parameter-step previous-parameter-step" aria-label="Previous parameter step">
-        <mat-icon class="white-background" aria-hidden="false" aria-label="Chevron left icon">chevron_left</mat-icon>
-      </button>
+<div class="fs-6 container px-0 overflow-hidden">
+  <div class="row">
+    <div class="col-auto">
+      <span class="fw-bold" aria-label="Current parameter name">{{ currentParamName }}:</span>
+    </div>
+  </div>
 
-      <mat-select value="Test" aria-label="Current parameter value">
-        <mat-option value="Test">Testasdfsdfasdfsdfasdfasdf</mat-option>
-        <mat-option value="Test2">Test2</mat-option>
-        <mat-option value="Test3">Test3</mat-option>
-        <mat-option value="Test4">Test4</mat-option>
-      </mat-select>
-
-      <button mat-stroked-button class="parameter-step next-parameter-step" aria-label="Next parameter step">
-        <mat-icon class="white-background" aria-hidden="false" aria-label="Chevron right icon">chevron_right</mat-icon>
+  <div class="row">
+    <div class="col-auto">
+      <button type="button" class="btn btn-outline-secondary" aria-label="Previous parameter step button">
+        <i class="bi bi-chevron-left" aria-label="Chevron left icon"></i>
       </button>
     </div>
 
-    <hr />
+    <div class="col-auto">
+      <select class="form-select" aria-label="Select parameter value" [value]="currentParamValue">
+        <option *ngFor="let value of paramValues" [value]="value">{{ value }}</option>
+      </select>
+    </div>
 
-    <div class="play-controls">
-      <button mat-stroked-button class="parameter-step previous-parameter-step" aria-label="Flip parameters backwards">
-        <mat-icon class="white-background" aria-hidden="false" aria-label="Backwards icon">fast_rewind</mat-icon>
+    <div class="col-auto">
+      <button type="button" class="btn btn-outline-secondary" aria-label="Next parameter step button">
+        <i class="bi bi-chevron-right" aria-label="Chevron right icon"></i>
       </button>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col">
+      <hr />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-auto">
+      <button type="button" class="btn btn-outline-secondary" aria-label="Flip parameters backwards button">
+        <i class="bi bi-caret-left-fill" aria-label="Caret left icon"></i>
+      </button>
+    </div>
+
+    <div class="col-auto">
       <button
         *ngIf="!currentlyPlaying; else stopPlayback"
-        mat-stroked-button
-        class="parameter-step"
-        aria-label="Play"
+        type="button"
+        class="btn btn-outline-secondary"
+        aria-label="Play button"
         (click)="startStopPlayback()"
       >
-        <mat-icon class="white-background" aria-hidden="false" aria-label="Play icon">play_arrow</mat-icon>
-      </button>
-
-      <button mat-stroked-button class="parameter-step next-parameter-step" aria-label="Flip parameters forwards">
-        <mat-icon class="white-background" aria-hidden="false" aria-label="Forwards icon">fast_forward</mat-icon>
+        <i class="bi bi-play" aria-label="Play icon"></i>
       </button>
     </div>
 
-    <div>
-      <button mat-button class="parameter-step" aria-label="Configure">
-        <span class="configure-text">Configure</span>
-        <mat-icon aria-hidden="false" aria-label="Expand icon">expand_more</mat-icon>
+    <div class="col-auto">
+      <button type="button" class="btn btn-outline-secondary" aria-label="Flip parameters forwards button">
+        <i class="bi bi-caret-right-fill" aria-label="Caret right icon"></i>
       </button>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-auto">
+      <div ngbDropdown class="d-inline-block" container="body">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          id="configureForm"
+          aria-label="Configure dropdown button"
+          ngbDropdownToggle
+        >
+          Configure
+        </button>
+
+        <div ngbDropdownMenu aria-labelledby="configureForm" class="overflow-hidden">
+          <div class="row">
+            <div class="col-auto">
+              <span>CONFIGURE MENU GOES HERE</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <ng-template #stopPlayback>
-  <button mat-stroked-button class="parameter-step" aria-label="Stop" (click)="startStopPlayback()">
-    <mat-icon aria-hidden="false" aria-label="Stop icon">stop</mat-icon>
+  <button type="button" class="btn btn-outline-secondary" aria-label="Stop button" (click)="startStopPlayback()">
+    <i class="bi bi-stop-fill" aria-label="Stop icon"></i>
   </button>
 </ng-template>

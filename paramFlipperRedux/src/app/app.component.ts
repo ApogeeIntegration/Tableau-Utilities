@@ -10,7 +10,10 @@ import { DataSource } from '@tableau/extensions-api-types';
 export class AppComponent implements AfterViewInit {
   public title = 'Param Flipper';
   public currentlyPlaying = false;
-  public currentParamValue: any;
+  public params = ['Test', 'Test2', 'Test3'];
+  public paramValues = ['Test', 'Test2', 'Test3'];
+  public currentParamName = 'Test';
+  public currentParamValue = 'Test';
 
   public paramForm = new FormGroup({
     parameter: new FormControl('', [Validators.required]),
