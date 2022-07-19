@@ -8,7 +8,7 @@
     <min-api-version>1.0</min-api-version>
     <source-location>
       <!-- <url>https://d3h6f1h3fcw8yo.cloudfront.net</url>  -->
-      <url>http://localhost:8080//</url>
+      <url>http://localhost:8081//</url>
     </source-location>
     <icon></icon>
     <permissions>
