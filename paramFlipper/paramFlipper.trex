@@ -10,8 +10,8 @@
       <!-- <url>https://d3h6f1h3fcw8yo.cloudfront.net</url>  -->
       <url>http://localhost:8081//</url>
     </source-location>
-    <icon></icon>
-    <permissions>
+    <icon></icon> <!--do i need a code for this? -->
+    <permissions> <!--what is needed here-->
       <permission>full data</permission>
     </permissions>
   </dashboard-extension>
